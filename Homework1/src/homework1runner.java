@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 import java.util.stream.IntStream;
 
@@ -9,7 +10,8 @@ public class homework1runner {
 
 		//question1();
 		//question2();
-		//question3();
+		question3();
+		//question5();
 	}
 	
 	public static void question1() {
@@ -36,35 +38,38 @@ public class homework1runner {
 	
 	public static void question2() {
 		int[] arrSizes = {100, 1000, 10000, 100000, 250000};
-		Sorting sortingAlgorithms = new Sorting();
+		Searching searchingAlgorithms = new Searching();
 		
 		System.out.println("Linear Search:");
 		for(int i : arrSizes) {
 			int[] arr = IntStream.generate(() -> new Random().nextInt(1000)).limit(i).toArray();
+			Arrays.sort(arr);
 			int key = new Random().nextInt(1000);
-			sortingAlgorithms.linearSearch(key, arr);
-			System.out.println("Size: " + i + " Steps: " + sortingAlgorithms.lSteps);
-			sortingAlgorithms.lSteps = 0;
+			searchingAlgorithms.linearSearch(key, arr);
+			System.out.println("Size: " + i + " Steps: " + searchingAlgorithms.lSteps);
+			searchingAlgorithms.lSteps = 0;
 		}
 		
 		System.out.println("");
 		System.out.println("Binary Search:");
 		for(int i : arrSizes) {
 			int[] arr = IntStream.generate(() -> new Random().nextInt(1000)).limit(i).toArray();
+			Arrays.sort(arr);
 			int key = new Random().nextInt(1000);
-			sortingAlgorithms.binarySearch(key, arr);
-			System.out.println("Size: " + i + " Steps: " + sortingAlgorithms.bSteps);
-			sortingAlgorithms.bSteps = 0;
+			searchingAlgorithms.binarySearch(key, arr);
+			System.out.println("Size: " + i + " Steps: " + searchingAlgorithms.bSteps);
+			searchingAlgorithms.bSteps = 0;
 		}
 		
 		System.out.println("");
 		System.out.println("Recursive Binary Search:");
 		for(int i : arrSizes) {
 			int[] arr = IntStream.generate(() -> new Random().nextInt(1000)).limit(i).toArray();
+			Arrays.sort(arr);
 			int key = new Random().nextInt(1000);
-			sortingAlgorithms.recursiveBinarySearch(key, arr);
-			System.out.println("Size: " + i + " Steps: " + sortingAlgorithms.rSteps);
-			sortingAlgorithms.rSteps = 0;
+			searchingAlgorithms.recursiveBinarySearch(key, arr);
+			System.out.println("Size: " + i + " Steps: " + searchingAlgorithms.rSteps);
+			searchingAlgorithms.rSteps = 0;
 		}
 	}
 	
@@ -73,6 +78,41 @@ public class homework1runner {
 		StdOut.printf("Linear Function: %.1f ms\n", q3.linearFunction());
 		StdOut.printf("Quadratic Function: %.1f ms\n", q3.quadraticFunction());
 		StdOut.printf("Cubic Function: %.1f ms\n", q3.cubicFunction());
+	}
+	
+	public static void question5() {
+		int[] arrSizes = {100, 1000, 10000, 100000, 250000};
+		Sorting sortingAlgorithm = new Sorting();
+		
+		System.out.println();
+		System.out.println("Quick Sort:");
+		for (int i : arrSizes) {
+			int[] intSort = IntStream.generate(() -> new Random().nextInt(1000)).limit(i).toArray();
+			Integer[] integerSort = Arrays.stream(intSort).boxed().toArray(Integer[]::new);
+			sortingAlgorithm.quickSort(integerSort);
+			System.out.println("Size: " + i + " Steps: " + sortingAlgorithm.qSteps);
+			sortingAlgorithm.qSteps = 0;
+		}
+		
+		System.out.println();
+		System.out.println("Merge Sort:");
+		for (int i : arrSizes) {
+			int[] intSort = IntStream.generate(() -> new Random().nextInt(1000)).limit(i).toArray();
+			Integer[] integerSort = Arrays.stream(intSort).boxed().toArray(Integer[]::new);
+			sortingAlgorithm.mergeSort(integerSort);
+			System.out.println("Size: " + i + " Steps: " + sortingAlgorithm.mSteps);
+			sortingAlgorithm.mSteps = 0;
+		}
+		
+		System.out.println();
+		System.out.println("Bubble Sort:");
+		for (int i : arrSizes) {
+			int[] intSort = IntStream.generate(() -> new Random().nextInt(1000)).limit(i).toArray();
+			Integer[] integerSort = Arrays.stream(intSort).boxed().toArray(Integer[]::new);
+			sortingAlgorithm.bubbleSort(integerSort);
+			System.out.println("Size: " + i + " Steps: " + sortingAlgorithm.bSteps);
+			sortingAlgorithm.bSteps = 0;
+		}
 	}
 	
 	

@@ -4,14 +4,14 @@ import java.util.stream.IntStream;
 
 import edu.princeton.cs.algs4.*;
 
-public class homework1runner {
+public class HW1Runner {
 
 	public static void main(String[] args) {
 
 		//question1();
 		//question2();
 		//question3();
-		question5();
+		//question5();
 	}
 	
 	public static void question1() {
@@ -37,13 +37,16 @@ public class homework1runner {
 	}
 	
 	public static void question2() {
+		//Varying sizes that will be used to generate larger and larger array
 		int[] arrSizes = {100, 1000, 10000, 100000, 250000};
 
 		LinearSearch linear = new LinearSearch();
 		System.out.println("Linear Search:");
 		for(int i : arrSizes) {
+			//generate an array of random integers from 0-1000
 			int[] arr = IntStream.generate(() -> new Random().nextInt(1000)).limit(i).toArray();
 			Arrays.sort(arr);
+			//generate a random integer to be searched
 			int key = new Random().nextInt(1000);
 			linear.search(key, arr);
 			System.out.println("Size: " + i + " Steps: " + linear.lSteps);
@@ -54,8 +57,10 @@ public class homework1runner {
 		System.out.println("");
 		System.out.println("Binary Search:");
 		for(int i : arrSizes) {
+			//generate an array of random integers from 0-1000
 			int[] arr = IntStream.generate(() -> new Random().nextInt(1000)).limit(i).toArray();
 			Arrays.sort(arr);
+			//generate a random integer to be searched
 			int key = new Random().nextInt(1000);
 			binary.search(key, arr);
 			System.out.println("Size: " + i + " Steps: " + binary.bSteps);
@@ -66,8 +71,10 @@ public class homework1runner {
 		System.out.println("");
 		System.out.println("Recursive Binary Search:");
 		for(int i : arrSizes) {
+			//generate an array of random integers from 0-1000
 			int[] arr = IntStream.generate(() -> new Random().nextInt(1000)).limit(i).toArray();
 			Arrays.sort(arr);
+			//generate a random integer to be searched
 			int key = new Random().nextInt(1000);
 			recursive.search(key, arr);
 			System.out.println("Size: " + i + " Steps: " + recursive.rSteps);
@@ -89,7 +96,9 @@ public class homework1runner {
 		System.out.println();
 		System.out.println("Quick Sort:");
 		for (int i : arrSizes) {
+			//generate an array of random integers from 0-1000
 			int[] intSort = IntStream.generate(() -> new Random().nextInt(1000)).limit(i).toArray();
+			//Turn the array of ints into Integers
 			Integer[] integerSort = Arrays.stream(intSort).boxed().toArray(Integer[]::new);
 			quick.sort(integerSort);
 			System.out.println("Size: " + i + " Steps: " + quick.qSteps);
@@ -100,7 +109,9 @@ public class homework1runner {
 		System.out.println();
 		System.out.println("Merge Sort:");
 		for (int i : arrSizes) {
+			//generate an array of random integers from 0-1000
 			int[] intSort = IntStream.generate(() -> new Random().nextInt(1000)).limit(i).toArray();
+			//Turn the array of ints into Integers
 			Integer[] integerSort = Arrays.stream(intSort).boxed().toArray(Integer[]::new);
 			merge.sort(integerSort);
 			System.out.println("Size: " + i + " Steps: " + merge.mSteps);
@@ -111,7 +122,9 @@ public class homework1runner {
 		System.out.println();
 		System.out.println("Bubble Sort:");
 		for (int i : arrSizes) {
+			//generate an array of random integers from 0-1000
 			int[] intSort = IntStream.generate(() -> new Random().nextInt(1000)).limit(i).toArray();
+			//Turn the array of ints into Integers
 			Integer[] integerSort = Arrays.stream(intSort).boxed().toArray(Integer[]::new);
 			bubble.sort(integerSort);
 			System.out.println("Size: " + i + " Steps: " + bubble.bSteps);

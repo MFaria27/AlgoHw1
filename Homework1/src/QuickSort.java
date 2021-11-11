@@ -9,24 +9,26 @@ public class QuickSort {
 	}
 
 	public void sort(Comparable[] a) {
+		//Quick sort sorts a completely random array of integers, so the code will make use of the shuffle method from StdRandom to shuffle the array.
 		StdRandom.shuffle(a);
 		quickSort(a, 0, a.length-1);
 	}
 	
 	private void quickSort(Comparable[] a, int low, int high) {
-		qSteps++;
-		if (high <= low) return;
-		int j = partition(a, low, high);
-		quickSort(a, low, j-1);
-		quickSort(a, j+1, high);
+		qSteps++; //A step will be recorded every time a comparison is made.
+		if (high <= low) return; //If the low point is greater than the high point, either something failed, or nothing was found.
+		int j = partition(a, low, high); //Quick sort works by first selecting a pivot. 
+		quickSort(a, low, j-1); //Then everything that is less then that pivot's value is exchanged to the left of the pivot
+		quickSort(a, j+1, high); //and everything that is greater will be moved to the right.
+		//This ensures that the pivot is always in the correct spot, and when ran recursively throughout the array, will ensure everything is in the correct spot.
 	}
 	
 	private int partition(Comparable[] a, int low, int high) {
 		int i = low, j = high + 1;
 		Comparable v = a[low];
 		while(true) {
-			while(less(a[++i], v)) if (i == high) break;
-			while(less(v, a[--j])) if (j == low) break;
+			while(less(a[++i], v)) if (i == high) break; // Once it reaches the end of the right side of the array past the pivot.
+			while(less(v, a[--j])) if (j == low) break; // Once it reaches the end of the left side of the array before the pivot.
 			if (i >= j) break;
 			exch(a, i, j);
 		}

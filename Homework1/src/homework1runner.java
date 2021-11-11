@@ -10,8 +10,8 @@ public class homework1runner {
 
 		//question1();
 		//question2();
-		question3();
-		//question5();
+		//question3();
+		question5();
 	}
 	
 	public static void question1() {
@@ -38,38 +38,40 @@ public class homework1runner {
 	
 	public static void question2() {
 		int[] arrSizes = {100, 1000, 10000, 100000, 250000};
-		Searching searchingAlgorithms = new Searching();
-		
+
+		LinearSearch linear = new LinearSearch();
 		System.out.println("Linear Search:");
 		for(int i : arrSizes) {
 			int[] arr = IntStream.generate(() -> new Random().nextInt(1000)).limit(i).toArray();
 			Arrays.sort(arr);
 			int key = new Random().nextInt(1000);
-			searchingAlgorithms.linearSearch(key, arr);
-			System.out.println("Size: " + i + " Steps: " + searchingAlgorithms.lSteps);
-			searchingAlgorithms.lSteps = 0;
+			linear.search(key, arr);
+			System.out.println("Size: " + i + " Steps: " + linear.lSteps);
+			linear.lSteps = 0;
 		}
 		
+		BinarySearch binary = new BinarySearch();
 		System.out.println("");
 		System.out.println("Binary Search:");
 		for(int i : arrSizes) {
 			int[] arr = IntStream.generate(() -> new Random().nextInt(1000)).limit(i).toArray();
 			Arrays.sort(arr);
 			int key = new Random().nextInt(1000);
-			searchingAlgorithms.binarySearch(key, arr);
-			System.out.println("Size: " + i + " Steps: " + searchingAlgorithms.bSteps);
-			searchingAlgorithms.bSteps = 0;
+			binary.search(key, arr);
+			System.out.println("Size: " + i + " Steps: " + binary.bSteps);
+			binary.bSteps = 0;
 		}
 		
+		RecursiveBinarySearch recursive = new RecursiveBinarySearch();
 		System.out.println("");
 		System.out.println("Recursive Binary Search:");
 		for(int i : arrSizes) {
 			int[] arr = IntStream.generate(() -> new Random().nextInt(1000)).limit(i).toArray();
 			Arrays.sort(arr);
 			int key = new Random().nextInt(1000);
-			searchingAlgorithms.recursiveBinarySearch(key, arr);
-			System.out.println("Size: " + i + " Steps: " + searchingAlgorithms.rSteps);
-			searchingAlgorithms.rSteps = 0;
+			recursive.search(key, arr);
+			System.out.println("Size: " + i + " Steps: " + recursive.rSteps);
+			recursive.rSteps = 0;
 		}
 	}
 	
@@ -82,36 +84,38 @@ public class homework1runner {
 	
 	public static void question5() {
 		int[] arrSizes = {100, 1000, 10000, 100000, 250000};
-		Sorting sortingAlgorithm = new Sorting();
 		
+		QuickSort quick = new QuickSort();
 		System.out.println();
 		System.out.println("Quick Sort:");
 		for (int i : arrSizes) {
 			int[] intSort = IntStream.generate(() -> new Random().nextInt(1000)).limit(i).toArray();
 			Integer[] integerSort = Arrays.stream(intSort).boxed().toArray(Integer[]::new);
-			sortingAlgorithm.quickSort(integerSort);
-			System.out.println("Size: " + i + " Steps: " + sortingAlgorithm.qSteps);
-			sortingAlgorithm.qSteps = 0;
+			quick.sort(integerSort);
+			System.out.println("Size: " + i + " Steps: " + quick.qSteps);
+			quick.qSteps = 0;
 		}
 		
+		MergeSort merge = new MergeSort();
 		System.out.println();
 		System.out.println("Merge Sort:");
 		for (int i : arrSizes) {
 			int[] intSort = IntStream.generate(() -> new Random().nextInt(1000)).limit(i).toArray();
 			Integer[] integerSort = Arrays.stream(intSort).boxed().toArray(Integer[]::new);
-			sortingAlgorithm.mergeSort(integerSort);
-			System.out.println("Size: " + i + " Steps: " + sortingAlgorithm.mSteps);
-			sortingAlgorithm.mSteps = 0;
+			merge.sort(integerSort);
+			System.out.println("Size: " + i + " Steps: " + merge.mSteps);
+			merge.mSteps = 0;
 		}
 		
+		BubbleSort bubble = new BubbleSort();
 		System.out.println();
 		System.out.println("Bubble Sort:");
 		for (int i : arrSizes) {
 			int[] intSort = IntStream.generate(() -> new Random().nextInt(1000)).limit(i).toArray();
 			Integer[] integerSort = Arrays.stream(intSort).boxed().toArray(Integer[]::new);
-			sortingAlgorithm.bubbleSort(integerSort);
-			System.out.println("Size: " + i + " Steps: " + sortingAlgorithm.bSteps);
-			sortingAlgorithm.bSteps = 0;
+			bubble.sort(integerSort);
+			System.out.println("Size: " + i + " Steps: " + bubble.bSteps);
+			bubble.bSteps = 0;
 		}
 	}
 	
